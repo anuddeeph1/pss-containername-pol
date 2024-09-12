@@ -38,7 +38,7 @@ spec:
             - kyverno
       validate:
         message: >-
-             "Failed InitContainers={{request.object.spec.initContainers[?securityContext.procMount != 'Default'].name || `[]`}}, Failed Containers = {{request.object.spec.containers[?securityContext.procMount !='Default'].name || `[]`}}; Changing the proc mount from the default is not allowed." 
+             "Failed InitContainers={{request.object.spec.initContainers[?securityContext.procMount != 'Default'].name || `[]`}}, Failed Containers = {{request.object.spec.containers[?securityContext.procMount !='Default'].name || `[]`}}; Changing the proc mount from the default is not allowed."
         pattern:
           spec:
             =(ephemeralContainers):
@@ -50,5 +50,3 @@ spec:
             containers:
               - =(securityContext):
                   =(procMount): "Default"
-
-
