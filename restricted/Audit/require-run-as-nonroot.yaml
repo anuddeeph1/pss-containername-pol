@@ -37,7 +37,7 @@ spec:
             - nirmata-system
             - kyverno
       validate:
-        message: "Failed InitContainers= {{request.object.spec.initContainers[?securityContext.runAsNonRoot != `true`].name || `[]`}}, Failed Containers = {{ request.object.spec.containers[?securityContext.runAsNonRoot != `true`].name || `[]`}}, Entire Pod {{request.name}} failed = {{request.object.spec.securityContext.runAsNonRoot != `true` }} Running the container as root is not allowed."
+        message: "Failed InitContainers= {{request.object.spec.initContainers[?securityContext.runAsNonRoot != `true`].name || `[]`}}, Failed Containers = {{ request.object.spec.containers[?securityContext.runAsNonRoot != `true`].name || `[]`}}, Entire Pod {{request.object.metadata.name}} failed = {{request.object.spec.securityContext.runAsNonRoot != `true` }} Running the container as root is not allowed."
         anyPattern:
           - spec:
               securityContext:
