@@ -36,7 +36,7 @@ spec:
             - kyverno
       validate:
         message: >-
-          "Failed InitContainers={{request.object.spec.initContainers[?securityContext.runAsUser == `0`].name || `[]`}}, Failed Containers = {{ request.object.spec.containers[?securityContext.runAsUser == `0`].name || `[]`}}, Entire Pod {{request.name}} failed = {{request.object.spec.securityContext.runAsUser == `0` }} Running the container as root user is not allowed."
+          "Failed InitContainers={{request.object.spec.initContainers[?securityContext.runAsUser == `0`].name || `[]`}}, Failed Containers = {{ request.object.spec.containers[?securityContext.runAsUser == `0`].name || `[]`}}, Entire Pod {{request.object.metadata.name}} failed = {{request.object.spec.securityContext.runAsUser == `0` }} Running the container as root user is not allowed."
         pattern:
           spec:
             =(securityContext):
